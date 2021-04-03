@@ -31,7 +31,9 @@
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn" id="inputteam">Adicionar</button>
+      	<form id="newteam" method="GET" action="<?php BASE_URL; ?>controllers/TeamsController.php">
+        	<input type="submit" class="btn" id="inputteam" value="Adicionar">
+        </form>
       </div>
     </div>
   </div>
