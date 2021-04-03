@@ -1,18 +1,16 @@
 <?php
-/**
- * player class
- */
 class Players extends Model
 {	
 	private $id;
+    private $team_id;
 	private $name;
 	private $goals;
 	private $assists;
-	private $currentTeam;
-	private $pastTeams;
-	private $average;
+    private $average;
 	private $matches;
 
+
+    
     /**
      * @return mixed
      */
@@ -29,6 +27,26 @@ class Players extends Model
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTeamId()
+    {
+        return $this->team_id;
+    }
+
+    /**
+     * @param mixed $team_id
+     *
+     * @return self
+     */
+    public function setTeamId($team_id)
+    {
+        $this->team_id = $team_id;
 
         return $this;
     }
@@ -89,46 +107,6 @@ class Players extends Model
     public function setAssists($assists)
     {
         $this->assists = $assists;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCurrentTeam()
-    {
-        return $this->currentTeam;
-    }
-
-    /**
-     * @param mixed $currentTeam
-     *
-     * @return self
-     */
-    public function setCurrentTeam($currentTeam)
-    {
-        $this->currentTeam = $currentTeam;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPastTeams()
-    {
-        return $this->pastTeams;
-    }
-
-    /**
-     * @param mixed $pastTeams
-     *
-     * @return self
-     */
-    public function setPastTeams($pastTeams)
-    {
-        $this->pastTeams = $pastTeams;
 
         return $this;
     }
