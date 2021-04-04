@@ -22,10 +22,10 @@
         </button>
       </div>
       <div class="modal-body">
-     		<form id="form-team" method="GET" action="<?php BASE_URL; ?>models/Teams.php">
+     		<form id="form-team" method="GET" action="<?php BASE_URL; ?>teams/adicionar">
     		  <div class="form-group">
     		    <label for="exampleInputEmail1">Nome do time</label>
-    		    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome do Time:">
+    		    <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome do Time:">
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
               <input type="submit" class="btn" id="input-team" value="Adicionar">
