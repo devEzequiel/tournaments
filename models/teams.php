@@ -42,27 +42,20 @@ class Teams extends Model
      */
     public function setTeamName($team_name)
     {
+    	global $pdo;
         $stmt = "SELECT * FROM teams WHERE team_name = :n";
         $stmt = $this->pdo->prepare($stmt);
-        $stmt->bindValue(':n', $_GET['name']);
+        $stmt->bindValue(':n', $team_name);
         $stmt->execute();
 
         if ($stmt->rowCount() != 0) {
-        	$stmt = "INSERT INTO teams (team_name) VALUES (:n)";
+        	$stmt = "INSERT INTO teams SET team_name = ':n'";
         	$stmt = $this->pdo->prepare($stmt);
-	        $stmt->bindValue(':n', $_GET['name']);
+	        $stmt->bindValue(':n', $team_name);
 	        $stmt->execute();
 
-	        if ($stmt) {
-	        	header ('Content-type: application/json');
-	        	echo json_encode(array(0 => 'ok'));
-	        }
+	        return $stmt;
 
         }
     }
-}
-
-if (isset($_GET['new']) && !empty($_GET['new'])) {
-	$team = new Teams();
-	$team->setTeamName();
 }
