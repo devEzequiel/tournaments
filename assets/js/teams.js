@@ -4,12 +4,11 @@
 // 		let nome = $('#input-team').val();
 // 		$.ajax({
 // 			data:{
-// 					name: nome,
-// 					new: '000'
+// 					name: nome
 // 				},
 // 			datatype: 'json',
 // 			type: 'get',
-// 			url: 'http://localhost/GitHub/tournaments/models/Teams.php' 
+// 			url: 'http://localhost/GitHub/tournaments/teams/adicionar' 
 // 		}).done(function(result){
 // 			console.log(+result);
 // 		})
