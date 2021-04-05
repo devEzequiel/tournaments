@@ -17,10 +17,14 @@ if (ENVIRONMENT == 'development'){
 	$config['dbuser'] = '';
 	$config['dbpass'] = '';
 }
+
 global $pdo;
 try {
 	$pdo = new PDO ("mysql:host=".$config['host'].";dbname=".$config['dbname'], $config['dbuser'], $config['dbpass']);
 }catch (PDOException $e) {
-	echo 'ERROR: '.$e->getmessage();
+	echo 'ERROR: '.$e->getMessage();
 	exit;
 }
+
+
+
