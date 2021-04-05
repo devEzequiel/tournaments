@@ -8,6 +8,37 @@ class Players extends Model
 	private $assists;
     private $average;
 	private $matches;
+    private $team_name;
+
+    public function setNewPlayer()
+    {   
+        global $db;
+        $pdo = "SELECT * FROM players WHERE (team_id = :t AND name = :n)";
+        $pdo = $this->db->prepare($pdo);
+        $pdo->bindValue(':t', $this->team_id);
+        $pdo->bindValue(':n', $this->name);
+        $pdo->execute();
+        $data = $pdo->fetch();
+
+        if ($data == false) {
+
+            $stmt = "INSERT INTO players (name, goals, team_id, matches, average, assists) VALUES (:n, :g, :t, :m, :av, :a)";
+            $stmt = $this->db->prepare($stmt);
+            $stmt->bindValue(':n', $this->name);
+            $stmt->bindValue(':g', $this->goals);
+            $stmt->bindValue(':t', $this->team_id);
+            $stmt->bindValue(':m', $this->matches);
+            $stmt->bindValue(':av', $this->average);
+            $stmt->bindValue(':a', $this->assists);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                return 0;
+            }
+        } else {
+            return 1;
+        }
+    }    
 
     public function getStats($team_id)
     {   
@@ -21,6 +52,8 @@ class Players extends Model
 
         return $data;
     }
+
+
     
     /**
      * @return mixed
@@ -28,18 +61,6 @@ class Players extends Model
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**
@@ -55,11 +76,17 @@ class Players extends Model
      *
      * @return self
      */
-    public function setTeamId($team_id)
+    public function setTeamId()
     {
-        $this->team_id = $team_id;
+        global $db;
+        $stmt = "SELECT * FROM teams WHERE team_name = :t";
+        $stmt = $this->db->prepare($stmt);
+        $stmt->bindValue(':t', $this->team_name);
+        $stmt->execute();
 
-        return $this;
+        $data = $stmt->fetch();
+
+        $this->team_id = $data['team_id'];
     }
 
     /**
@@ -158,6 +185,26 @@ class Players extends Model
     public function setMatches($matches)
     {
         $this->matches = $matches;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTeamName()
+    {
+        return $this->team_name;
+    }
+
+    /**
+     * @param mixed $team_name
+     *
+     * @return self
+     */
+    public function setTeamName($team_name)
+    {
+        $this->team_name = $team_name;
 
         return $this;
     }
