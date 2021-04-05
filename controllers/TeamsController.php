@@ -47,7 +47,8 @@ class teamsController extends Controller
 
 		$data['team'] = $team->getTeamName($team_id);
 
-		$this->loadTemplate('abrir', $data);
+		$data['team_id'] = $team_id;
 
+		$this->loadTemplate('abrir', $data);
 	}
 }
