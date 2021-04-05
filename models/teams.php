@@ -30,9 +30,28 @@ class Teams extends Model
     /**
      * @return mixed
      */
-    public function getTeamName()
+    public function getTeamName($id)
     {
-        return $this->team_name;
+        $stmt = "SELECT team_name FROM teams WHERE team_id = :id";
+        $stmt = $this->db->prepare($stmt);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
+    public function getTeams()
+    {
+       global $db;
+       $stmt = "SELECT * FROM teams";
+       $stmt = $this->db->query($stmt);
+
+       $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+       return $data;
+
     }
 
     /**
@@ -41,21 +60,41 @@ class Teams extends Model
      * @return self
      */
     public function setTeamName($team_name)
-    {
-    	global $pdo;
-        $stmt = "SELECT * FROM teams WHERE team_name = :n";
-        $stmt = $this->pdo->prepare($stmt);
-        $stmt->bindValue(':n', $team_name);
-        $stmt->execute();
+    {	
+        try {	
 
-        if ($stmt->rowCount() != 0) {
-        	$stmt = "INSERT INTO teams SET team_name = ':n'";
-        	$stmt = $this->pdo->prepare($stmt);
+        	global $db;
+        	$stmt = "SELECT * FROM teams WHERE team_name = :n";
+			$stmt = $this->db->prepare($stmt);
+	        $stmt->bindValue(':n', $team_name);        
+	       	$stmt->execute();
+
+	       	$data = $stmt->fetch();
+
+
+	    } catch (PDOException $e){
+
+	    	echo "ERROR: ". $e->getMessage();
+
+	    } catch (Exception $exception){
+
+	    	var_dump($exception);
+	    }
+
+
+        if ($data == false) {
+        	$stmt = "INSERT INTO teams SET team_name = :n";
+        	$stmt = $this->db->prepare($stmt);
 	        $stmt->bindValue(':n', $team_name);
 	        $stmt->execute();
 
-	        return $stmt;
-
+	        if ($stmt->rowCount() > 0){
+	        	return 0;
+	        } else {
+	        	return 1;
+	        }
         }
+
+        return 2;
     }
 }
