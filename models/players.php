@@ -9,7 +9,18 @@ class Players extends Model
     private $average;
 	private $matches;
 
+    public function getStats($team_id)
+    {   
+        global $db;
+        $stmt = " SELECT * FROM players WHERE team_id = :t";
+        $stmt = $this->db->prepare($stmt);
+        $stmt->bindValue(':t', $team_id);
+        $stmt->execute();
 
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
     
     /**
      * @return mixed
