@@ -16,28 +16,18 @@
       <th scope="col">Média</th>
     </tr>
   </thead>
+
+  <?php foreach ($viewData['stats'] as $p) {?>
   <tbody>
     <tr>
-      <th scope="row">Kliment</th>
-      <td>4</td>
-      <td>7</td>
-      <td>3</td>
-      <td>6.9</td>
+      <th scope="row"><?php echo $p['name']; ?></th>
+      <td><?php echo $p['matches']; ?></td>
+      <td><?php echo $p['goals']; ?></td>
+      <td><?php echo $p['assists']; ?></td>
+      <td><?php echo $p['average']; ?></td>
     </tr>
-    <tr>
-      <th scope="row">Diego</th>
-      <td>7</td>
-      <td>2</td>
-      <td>5</td>
-      <td>7.3</td>
-    </tr>
-    <tr>
-      <th scope="row">Lenny</th>
-      <td>7</td>
-      <td>2</td>
-      <td>5</td>
-      <td>7.3</td>
-    </tr>
+  <?php } ?>
+    
   </tbody>
 </table>
 	</div>
@@ -55,28 +45,33 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="form-team" method="GET" action="<?php echo BASE_URL; ?>players/adicionar">
+        <form id="form-player" method="GET" action="<?php echo BASE_URL; ?>players/adicionar">
           <div class="form-group">
-            <div class="row"></div>
-              <label for="exampleInputEmail1">Nome do jogador</label>
-              <input name="name" type="text" class="form-control col-md-4" id="name-team" placeholder="Nome do Jogador:">
-              <label for="exampleInputEmail1">Qtd de gols</label>
-              <input name="name" type="text" class="form-control col-md-4" id="name-team" placeholder="Nome do Jogador:">
+            <label for="formp" style="margin-right: 115px;">Nome do Jogador</label>
+            <label for="formp0">Gols Feitos</label>
+            <div class="row">
+              <input name="name" type="text" class="form-control col" id="formp" placeholder="Nome do Jogador:">
+              <input name="goals" value="0" type="text" class="form-control col" id="formp0" placeholder="Quantidade de Gols">
             </div>
-            <div id="team-msg"></div>
-            <label for="exampleInputEmail1">Assistencias</label>
-            <input name="name" type="text" class="form-control" id="name-team" placeholder="Nome do Jogador:">
-            <div id="team-msg"></div>
-            <label for="exampleInputEmail1">Quantidade de Partidas</label>
-            <input name="name" type="text" class="form-control" id="name-team" placeholder="Nome do Jogador:">
-            <div id="team-msg"></div>
-            <label for="exampleInputEmail1">Media</label>
-            <input name="name" type="text" class="form-control" id="name-team" placeholder="Nome do Jogador:">
+            <label for="formp1" style="margin-right: 115px;">Nº de Assistências</label>
+            <label for="formp2">Nº de Partidas Jogadas</label>
+            <div class="row">
+              <input name="assists" value="0" type="text" class="form-control col" id="formp1" placeholder="Assistências">
+              <input name="matches" value="0" type="text" class="form-control col" id="formp2" placeholder="Partidas Jogadas">
+            </div>
+            <label for="formp" style="margin-right: 162px;">Nota Média</label>
+            <label for="team_namm">Nome do Time</label>
+            
+            <div class="row">
+              <input name="avrg" value="0.0" type="text" class="form-control col" id="formp3" placeholder="Nota Média">
+              <input name="team" value="<?php echo $viewData['team']['team_name']; ?>" type="text" class="form-control col" id="team_namm" readonly>
+            </div>          
+            
             <div id="team-msg"></div>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <input type="submit" class="btn" name ="submit" id="input-team" value="Adicionar">
+              <input type="submit" class="btn" id="input-team" value="Adicionar">
             </div>
           </div>
         </form>
