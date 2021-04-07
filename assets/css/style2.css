@@ -11,7 +11,7 @@
 	align-items: left;
 }
 #sel1{
-	margin-right: 100px;
+	margin-right: 300px;
 	border: 3px ridge #C4C9FF;
 	border-radius: 4px;
 	width: 200px;
@@ -22,7 +22,7 @@
 }
 
 #sel2{
-	margin-left: 100px;
+	margin-left: 300px;
 	border: 3px ridge #C4C9FF;
 	border-radius: 4px;
 	width: 200px;
@@ -33,11 +33,19 @@
 }
 
 .sel:hover{
-	border-color: #83acfe;
+	border-color: #83acfe !important;
 }
 
 #xis{
 	margin-top: 0px;
 	font-size: 25px;
 	font-family: bold;
+}
+input[type=text]{
+	width: 45px;
+	border: 2px ridge #C4C9FF;
+	border-radius: 5px;
+}
+input[type=text]:hover{
+	border: 2px ridge #83acfe;
 }
