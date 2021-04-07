@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	$('#form-player').on('submit', function(e){
 		e.preventDefault();
-		let name = $('#formp').val();
+
+		let nome = $('#formp').val();
 		let gols = $('#formp0').val();
 		let ass = $('#formp1').val();
 		let matchez = $('#formp2').val();
@@ -18,13 +19,13 @@ $(document).ready(function(){
 				},
 			datatype: 'json',
 			type: 'get',
-			url: 'http://localhost/GitHub/tournaments/teams/adicionar' 
+			url: 'http://localhost/GitHub/tournaments/players/adicionar' 
 		}).done(function(result){
 			
 			if (result == 0) {
 				$('#team-msg').html('<div class="alert alert-success" id="msg" role="alert">Jogador adicionado com Sucesso! Recarregue a página.</div>');
 			} else {
-				$('#team-msg').html('<div class="alert alert-danger" id="msg" role="alert">Esse jogador já existe</div>')
+				$('#team-msg').html('<div class="alert alert-danger" id="msg" role="alert">Esse jogador já adicionado!</div>')
 			}
 		})
 	})
