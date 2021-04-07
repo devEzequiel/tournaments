@@ -49,3 +49,18 @@ input[type=text]{
 input[type=text]:hover{
 	border: 2px ridge #83acfe;
 }
+
+input[type=submit]{
+	background-color: #407FFF;
+	border: 2px solid #83acfe;
+	width: 140px;
+	height: 40px;
+	border-radius: 9px;
+	color: white;
+}
+
+input[type=submit]:hover{
+	background-color: #83acfe;
+	border: 2px solid #407FFF;
+	color: white;
+}
