@@ -9,6 +9,7 @@
 
 
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style2.css">
 	<title>Tournaments</title>
 </head>
 <body>
@@ -23,13 +24,13 @@
 	        <a class="nav-link" id="link-nav" href="#">Jogadores</a>
 	      </li>
 	      <li class="nav-item link-nav">
-	        <a class="nav-link" id="link-nav" href="<?php echo BASE_URL; ?>teams" >Times</a>
+	        <a class="nav-link" id="link-nav" href="<?php echo BASE_URL; ?>teams/" >Times</a>
 	      </li>
 	      <li class="nav-item link-nav">
-	        <a class="nav-link" id="link-nav" href="#">Estatisticas</a>
+	        <a class="nav-link" id="link-nav" href="<?php echo BASE_URL;?>">Estatisticas</a>
 	      </li>
 	      <li class="nav-item link-nav">
-	        <a class="nav-link" id="link-nav" href="#">Nova Partida</a>
+	        <a class="nav-link" id="link-nav" href="<?php echo BASE_URL;?>match/">Nova Partida</a>
 	      </li>
 	      <li class="nav-item dropdown" id="nav-link">
 	        <a class="nav-link dropdown-toggle" id="link-nav" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,8 +46,8 @@
 	<?php echo $this->loadViewInTemplate($viewName, $viewData);?>
 
 
-	<script type="text/javascript" src="<?php BASE_URL; ?>assets/js/teams.js"></script>
-	<script type="text/javascript" src="<?php BASE_URL; ?>assets/js/players.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/teams.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/players.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
