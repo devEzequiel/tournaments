@@ -42,6 +42,7 @@
 
 		  </tbody>
 		</table>
+		<div class=""><input type="submit" style="margin-top: 20px;" value="Salvar Dados"></div>
 	</form>
 	<form id="form2">
 		<table class="table" id="table2" style="width: 460px; margin-top: 60px; margin-left: 100px;">
@@ -57,6 +58,7 @@
 		    
 		  </tbody>
 		</table>
+		<div class=""><input type="submit" style="margin-top: 20px; margin-left:110px" value="Salvar Dados"></div>
 	</form>
 </div>
 </div>
