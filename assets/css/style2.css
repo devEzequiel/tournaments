@@ -52,11 +52,12 @@ input[type=text]:hover{
 
 input[type=submit]{
 	background-color: #407FFF;
-	border: 2px solid #83acfe;
-	width: 140px;
-	height: 40px;
-	border-radius: 9px;
+	border:none;
+	width: 120px;
+	height: 32px;
+	border-radius: 4px;
 	color: white;
+	margin-bottom: 20px;
 }
 
 input[type=submit]:hover{
