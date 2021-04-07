@@ -1,39 +1,30 @@
 <div class="container torneio">
 
 	<div>
-		<table class="table table-striped">
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Nome</th>
-      <th scope="col">Matches</th>
-      <th scope="col">Gols</th>
-      <th scope="col">Assists</th>
-      <th scope="col">Avrg</th>
+      <th scope="col" style="cursor: pointer;">Matches</th>
+      <th scope="col" style="cursor: pointer;">Gols</th>
+      <th scope="col" style="cursor: pointer;">Assists</th>
+      <th scope="col" style="cursor: pointer;">Avrg</th>
     </tr>
   </thead>
+  <?php
+    foreach ($viewData as $p) {
+  ?>
   <tbody>
     <tr>
-      <th scope="row">Kliment</th>
-      <td>4</td>
-      <td>7</td>
-      <td>3</td>
-      <td>6.9</td>
+      <th scope="row"><?php echo $p['name']; ?></th>
+      <td><?php echo $p['matches']; ?></td>
+      <td><?php echo $p['goals']; ?></td>
+      <td><?php echo $p['assists']; ?></td>
+      <td><?php echo $p['average']; ?></td>
     </tr>
     <tr>
-      <th scope="row">Diego</th>
-      <td>7</td>
-      <td>2</td>
-      <td>5</td>
-      <td>7.3</td>
-    </tr>
-    <tr>
-      <th scope="row">Lenny</th>
-      <td>7</td>
-      <td>2</td>
-      <td>5</td>
-      <td>7.3</td>
-    </tr>
   </tbody>
+  <?php } ?>
 </table>
 	</div>
 
