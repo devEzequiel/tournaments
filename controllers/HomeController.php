@@ -5,7 +5,10 @@ class homeController extends Controller
 
 	public function index()
 	{
-		$this->loadTemplate('home');
+		$players = new Players();
+		$data = $players->getPlayersByGoals();
+
+		$this->loadTemplate('home', $data);
 	}
 
 }
