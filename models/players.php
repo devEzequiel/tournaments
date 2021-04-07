@@ -53,6 +53,20 @@ class Players extends Model
         return $data;
     }
 
+    public function getPlayersName()
+    {   
+        global $db;
+        $stmt = " SELECT name FROM players WHERE team_id = :t";
+        $stmt = $this->db->prepare($stmt);
+        $stmt->bindValue(':t', $this->team_id);
+        $stmt->execute();
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
+
 
     public function getPlayersByGoals()
     {
@@ -214,6 +228,8 @@ class Players extends Model
     public function setTeamName($team_name)
     {
         $this->team_name = $team_name;
+
+        $this->setTeamId();
 
         return $this;
     }
