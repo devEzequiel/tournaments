@@ -10,7 +10,7 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Nome</th>
-          <th scope="col">Matches</th>
+          <th scope="col">Partidas</th>
           <th scope="col">Gols</th>
           <th scope="col">Assists</th>
           <th scope="col">Média</th>
