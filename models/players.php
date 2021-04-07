@@ -54,6 +54,15 @@ class Players extends Model
     }
 
 
+    public function getPlayersByGoals()
+    {
+        $stmt = "SELECT * FROM players ORDER BY goals DESC";
+        $stmt = $this->db->query($stmt);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
     
     /**
      * @return mixed
