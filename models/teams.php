@@ -45,7 +45,7 @@ class Teams extends Model
     public function getTeams()
     {
        global $db;
-       $stmt = "SELECT * FROM teams";
+       $stmt = "SELECT * FROM teams ORDER BY team_name ASC";
        $stmt = $this->db->query($stmt);
 
        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
