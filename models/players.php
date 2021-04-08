@@ -200,11 +200,7 @@ class Players extends Model
         return $this->matches;
     }
 
-    /**
-     * @param mixed $matches
-     *
-     * @return self
-     */
+
     public function setMatch()
     {   
         $pdo = "SELECT * FROM players WHERE name = :n";
@@ -214,12 +210,14 @@ class Players extends Model
         $data = $pdo->fetch(PDO::FETCH_ASSOC);
         $match = $data['matches'];
         $matches = $match + 1;
+        $goals = $data['goals'] + $this->goals;
+        $assists = $data['assists'] + $this->assists;
         $avrg = ($data['average'] + $this->average)/$matches;
         if ($data) {
             $stmt = "UPDATE players SET goals = :g, assists = :a, average = '$avrg', matches = '$matches' WHERE name = :n";
             $stmt = $this->db->prepare($stmt);
-            $stmt->bindValue(':g', $this->goals);
-            $stmt->bindValue(':a', $this->assists);
+            $stmt->bindValue(':g', $goals);
+            $stmt->bindValue(':a', $assists);
             $stmt->bindValue(':n', $this->name);
             $stmt->execute();
 
@@ -247,6 +245,18 @@ class Players extends Model
         $this->team_name = $team_name;
 
         $this->setTeamId();
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $matches
+     *
+     * @return self
+     */
+    public function setMatches($matches)
+    {
+        $this->matches = $matches;
 
         return $this;
     }
