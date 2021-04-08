@@ -21,7 +21,7 @@
 	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
 	    <ul class="navbar-nav ml-auto">
 	      <li class="nav-item link-nav">
-	        <a class="nav-link" id="link-nav" href="#">Jogadores</a>
+	        <a class="nav-link" id="link-nav" href="<?php echo BASE_URL;?>">Jogadores</a>
 	      </li>
 	      <li class="nav-item link-nav">
 	        <a class="nav-link" id="link-nav" href="<?php echo BASE_URL; ?>teams/" >Times</a>
