@@ -27,9 +27,13 @@
 		</div>
 		
 	</div>
+	<?php if(isset($_GET['insert'])){?>
+		<div class="row"><div class="alert alert-success" role="alert" id="msg" >Dados salvos com Sucesso!</div></div>
+	<?php } ?>
 <div class="row">
-	<form id="form1">
-		<table class="table" id="table1" style="width: 460px; margin-top: 60px;">
+	<div>
+	<form method="POST" action="<?php echo BASE_URL; ?>match/addstats">
+		<table class="table" id="table1" style="width: 460px; margin-top: 60px;  display: inline-table;">
 		  <thead>
 		    <tr>
 		      <th scope="col">Name</th>
@@ -39,13 +43,10 @@
 		    </tr>
 		  </thead>
 		  <tbody id="tables1">
-
 		  </tbody>
 		</table>
-		<div class=""><input type="submit" style="margin-top: 20px;" value="Salvar Dados"></div>
-	</form>
-	<form id="form2">
-		<table class="table" id="table2" style="width: 460px; margin-top: 60px; margin-left: 100px;">
+		
+		<table class="table" id="table2" style="width: 460px; margin-top: 60px; margin-left: 100px; display: inline-table;">
 		  <thead>
 		    <tr>
 		      <th scope="col">Name</th>
@@ -58,7 +59,10 @@
 		    
 		  </tbody>
 		</table>
-		<div class=""><input type="submit" style="margin-top: 20px; margin-left:110px" value="Salvar Dados"></div>
+		<div class="submit2"><input type="submit" style="margin-top: 20px; margin-left: 120px;" value="Salvar Partida"></div>
+	</div>
+
 	</form>
+	
 </div>
 </div>
