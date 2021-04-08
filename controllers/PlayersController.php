@@ -14,7 +14,6 @@ class playersController extends Controller
 		$player->setAssists($_GET['assists']);
 		$player->setAverage($_GET['avrg']);
 		$player->setTeamName($_GET['team']);
-		$player->setTeamId();
 		
 		switch ($player->setNewPlayer()) {
 			case 0:
