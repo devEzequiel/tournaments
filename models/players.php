@@ -205,11 +205,28 @@ class Players extends Model
      *
      * @return self
      */
-    public function setMatches($matches)
-    {
-        $this->matches = $matches;
+    public function setMatch()
+    {   
+        $pdo = "SELECT * FROM players WHERE name = :n";
+        $pdo = $this->db->prepare($pdo);
+        $pdo->bindValue(':n', $this->name);
+        $pdo->execute();
+        $data = $pdo->fetch(PDO::FETCH_ASSOC);
+        $match = $data['matches'];
+        $matches = $match + 1;
+        $avrg = ($data['average'] + $this->average)/$matches;
+        if ($data) {
+            $stmt = "UPDATE players SET goals = :g, assists = :a, average = '$avrg', matches = '$matches' WHERE name = :n";
+            $stmt = $this->db->prepare($stmt);
+            $stmt->bindValue(':g', $this->goals);
+            $stmt->bindValue(':a', $this->assists);
+            $stmt->bindValue(':n', $this->name);
+            $stmt->execute();
 
-        return $this;
+            if ($stmt->rowCount()) {
+                return 1;
+            }
+        }
     }
 
     /**
