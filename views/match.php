@@ -28,7 +28,7 @@
 		
 	</div>
 	<?php if(isset($_GET['insert'])){?>
-		<div class="row"><div class="alert alert-success" role="alert" id="msg" >Dados salvos com Sucesso!</div></div>
+		<div class="row"><div class="alert alert-success" role="alert" id="msg3" >Dados salvos com Sucesso!</div></div>
 	<?php } ?>
 <div class="row">
 	<div>
@@ -59,7 +59,7 @@
 		    
 		  </tbody>
 		</table>
-		<div class="submit2"><input type="submit" style="margin-top: 20px; margin-left: 120px;" value="Salvar Partida"></div>
+		<div class="submit2"><input type="submit" id="subbut" style="margin-top: 20px; margin-left: 120px;" value="Salvar Partida"></div>
 	</div>
 
 	</form>
