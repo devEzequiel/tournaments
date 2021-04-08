@@ -41,7 +41,7 @@
 	font-size: 25px;
 	font-family: bold;
 }
-input[type=text]{
+.text8{
 	width: 45px;
 	border: 2px ridge #C4C9FF;
 	border-radius: 5px;
@@ -50,7 +50,7 @@ input[type=text]:hover{
 	border: 2px ridge #83acfe;
 }
 
-input[type=submit]{
+#subbut{
 	background-color: #407FFF;
 	font-size: 26px;
 	border: none;
@@ -67,6 +67,6 @@ input[type=submit]:hover{
 	color: white;
 }
 
-#msg{
+#msg3{
 	width: 1020px !important;
 }
