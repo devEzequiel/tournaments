@@ -2,6 +2,7 @@
 $(document).ready(function(){
 	$("#table1").hide();
 	$("#table2").hide();
+	$(".submit2").hide();
 })
 // receber a table do time 1
 $(document).ready(function(){
@@ -20,7 +21,7 @@ $(document).ready(function(){
 			let x;
 			let html;
 			for(x = 0; x<count; x++){
-			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input type="text" name="avrg'+json[x]['name']+'" value="0.0"></td><td><input type="text" name="goals'+json[x]['name']+'" value="0"></td><td><input type="text" name="assists'+json[x]['name']+'" value="0"></td></tr>';
+			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input type="text" name="avrg'+json[x]['name']+'" value="0.0"></td><td><input type="text" name="goal'+json[x]['name']+'" value="0"></td><td><input type="text" name="assi'+json[x]['name']+'" value="0"></td></tr>';
 			}
 			html += '<div class=""><input type="submit" class="btn"></div>';
 			$("#tables1").html(html);
@@ -43,10 +44,13 @@ $(document).ready(function(){
 			let x;
 			let html;
 			for(x = 0; x<count; x++){
-			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input type="text" name="avrg'+json[x]['name']+'" value="0.0"></td><td><input type="text" name="goals'+json[x]['name']+'" value="0"></td><td><input type="text" name="assists'+json[x]['name']+'" value="0"></td></tr>';
+			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input type="text" name="avrg'+json[x]['name']+'" value="0.0"></td><td><input type="text" name="goal'+json[x]['name']+'" value="0"></td><td><input type="text" name="assi'+json[x]['name']+'" value="0"></td></tr>';
 			}
 			html += '<div class=""><input type="submit" class="btn"></div>';
 			$("#tables2").html(html);
+			$(".submit2").show();
 		});
 	});
 });
+
+//enviar dados do team1 para o backend
