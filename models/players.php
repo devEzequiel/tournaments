@@ -6,7 +6,7 @@ class Players extends Model
 	private $name;
 	private $goals;
 	private $assists;
-    private $average;
+    private $score;
 	private $matches;
     private $team_name;
 
@@ -22,13 +22,13 @@ class Players extends Model
 
         if ($data == false) {
 
-            $stmt = "INSERT INTO players (name, goals, team_id, matches, average, assists) VALUES (:n, :g, :t, :m, :av, :a)";
+            $stmt = "INSERT INTO players (name, goals, team_id, matches, score, assists) VALUES (:n, :g, :t, :m, :av, :a)";
             $stmt = $this->db->prepare($stmt);
             $stmt->bindValue(':n', $this->name);
             $stmt->bindValue(':g', $this->goals);
             $stmt->bindValue(':t', $this->team_id);
             $stmt->bindValue(':m', $this->matches);
-            $stmt->bindValue(':av', $this->average);
+            $stmt->bindValue(':av', $this->score);
             $stmt->bindValue(':a', $this->assists);
             $stmt->execute();
 
@@ -175,19 +175,20 @@ class Players extends Model
     /**
      * @return mixed
      */
-    public function getAverage()
+    public function getScore()
     {
-        return $this->average;
+        return $this->score;
     }
 
     /**
-     * @param mixed $average
+     * @param mixed $score
      *
      * @return self
      */
-    public function setAverage($average)
-    {
-        $this->average = $average;
+    public function setScore($score)
+    {   
+        
+        $this->score = $score;
 
         return $this;
     }
@@ -212,9 +213,9 @@ class Players extends Model
         $matches = $match + 1;
         $goals = $data['goals'] + $this->goals;
         $assists = $data['assists'] + $this->assists;
-        $avrg = ($data['average'] + $this->average)/$matches;
+        $avrg = $data['score'] + $this->score;
         if ($data) {
-            $stmt = "UPDATE players SET goals = :g, assists = :a, average = '$avrg', matches = '$matches' WHERE name = :n";
+            $stmt = "UPDATE players SET goals = :g, assists = :a, score = '$avrg', matches = '$matches' WHERE name = :n";
             $stmt = $this->db->prepare($stmt);
             $stmt->bindValue(':g', $goals);
             $stmt->bindValue(':a', $assists);
