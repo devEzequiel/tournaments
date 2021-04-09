@@ -24,7 +24,7 @@
           <td><?php echo $p['matches']; ?></td>
           <td><?php echo $p['goals']; ?></td>
           <td><?php echo $p['assists']; ?></td>
-          <td><?php echo $p['average']; ?></td>
+          <td><?php echo ($p['average']/$p['matches']); ?></td>
         </tr>
       <?php } ?>
         
