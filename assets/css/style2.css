@@ -45,8 +45,10 @@
 	width: 45px;
 	border: none;
 	border-radius: 5px;
+	text-align: center;
 }
 input[type=text]:hover{
+
 	border: none;
 }
 
@@ -69,4 +71,14 @@ input[type=submit]:hover{
 
 #msg3{
 	width: 1020px !important;
+}
+
+#tbf{
+	background-color: #91EBF7;
+}
+#tbs{
+	background-color: #B2EBF7;
+}
+#tbt{
+	background-color: #D7EBF7;
 }
