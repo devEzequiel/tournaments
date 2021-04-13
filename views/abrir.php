@@ -7,7 +7,7 @@
 <div class="container torneio">
 	<div>
 		<table class="table">
-      <thead class="thead-dark">
+      <thead class="">
         <tr>
           <th scope="col">Nome</th>
           <th scope="col">Partidas</th>
@@ -20,7 +20,7 @@
       <?php foreach ($viewData['stats'] as $p) {?>
       <tbody>
         <tr>
-          <th scope="row"><?php echo $p['name']; ?></th>
+          <td scope="row"><?php echo $p['name']; ?></td>
           <td><?php echo $p['matches']; ?></td>
           <td><?php echo $p['goals']; ?></td>
           <td><?php echo $p['assists']; ?></td>
