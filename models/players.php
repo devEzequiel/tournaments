@@ -77,6 +77,36 @@ class Players extends Model
 
         return $data;
     }
+
+    public function getPlayersByAssists()
+    {
+        $stmt = "SELECT * FROM players ORDER BY assists DESC";
+        $stmt = $this->db->query($stmt);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
+    public function getPlayersByScore()
+    {
+        $stmt = "SELECT * FROM players WHERE matches > '0' ORDER BY (score/matches) DESC";
+        $stmt = $this->db->query($stmt);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
+    public function getPlayersByMatches()
+    {
+        $stmt = "SELECT * FROM players WHERE matches > '0' ORDER BY (score/matches) DESC";
+        $stmt = $this->db->query($stmt);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
     
     /**
      * @return mixed
