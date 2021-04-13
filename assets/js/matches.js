@@ -21,7 +21,7 @@ $(document).ready(function(){
 			let x;
 			let html;
 			for(x = 0; x<count; x++){
-			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input class="text8" type="text" name="avrg'+json[x]['name']+'" value="0.0"></td><td><input class="text8" type="text" name="goal'+json[x]['name']+'" value="0"></td><td><input type="text" class="text8" name="assi'+json[x]['name']+'" value="0"></td></tr>';
+			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input class="text8" type="text" name="avrg'+json[x]['name']+'" placeholder="6.0"></td><td><input class="text8" type="text" name="goal'+json[x]['name']+'" placeholder="0"></td><td><input type="text" class="text8" name="assi'+json[x]['name']+'" placeholder="0"></td></tr>';
 			}
 			html += '<div class=""><input type="submit" class="btn"></div>';
 			$("#tables1").html(html);
@@ -44,7 +44,7 @@ $(document).ready(function(){
 			let x;
 			let html;
 			for(x = 0; x<count; x++){
-			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input class="text8" type="text" name="avrg'+json[x]['name']+'" value="0.0"></td><td><input class="text8" type="text" name="goal'+json[x]['name']+'" value="0"></td><td><input type="text" class="text8" name="assi'+json[x]['name']+'" value="0"></td></tr>';
+			html +=	'<tr><td scope="row">'+json[x]['name']+'</th><td><input class="text8" type="text" name="avrg'+json[x]['name']+'" placeholder="6.0"></td><td><input class="text8" type="text" name="goal'+json[x]['name']+'" placeholder="0"></td><td><input type="text" class="text8" name="assi'+json[x]['name']+'" placeholder="0"></td></tr>';
 			}
 			html += '<div class=""><input type="submit" class="btn"></div>';
 			$("#tables2").html(html);
