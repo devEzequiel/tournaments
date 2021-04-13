@@ -187,9 +187,11 @@ class Players extends Model
      */
     public function setScore($score)
     {   
-        
-        $this->score = $score;
-
+        if($score > 10){
+            $this->score = $score/10;
+        } else {
+            $this->score = $score;
+        }
         return $this;
     }
 
