@@ -146,7 +146,11 @@ class Players extends Model
      * @return self
      */
     public function setGoals($goals)
-    {
+    {   
+        if(empty($goals)){
+            $goals = 0;
+        }
+
         $this->goals = $goals;
 
         return $this;
@@ -167,6 +171,9 @@ class Players extends Model
      */
     public function setAssists($assists)
     {
+        if(empty($assists)){
+            $assists = 0;
+        }
         $this->assists = $assists;
 
         return $this;
@@ -189,8 +196,10 @@ class Players extends Model
     {   
         if($score > 10){
             $this->score = $score/10;
-        } else {
+        } else if (($score <= 10) && !empty($score)){
             $this->score = $score;
+        } else if (empty($score)){
+            $this->score = 6;
         }
         return $this;
     }
