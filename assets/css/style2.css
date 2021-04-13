@@ -43,11 +43,11 @@
 }
 .text8{
 	width: 45px;
-	border: 2px ridge #C4C9FF;
+	border: none;
 	border-radius: 5px;
 }
 input[type=text]:hover{
-	border: 2px ridge #83acfe;
+	border: none;
 }
 
 #subbut{
