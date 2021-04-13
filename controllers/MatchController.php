@@ -44,7 +44,7 @@ class matchController extends Controller
 			$p->setName($player[$x]);
 			$p->setGoals($_POST['goal'.$player[$x]]);
 			$p->setAssists($_POST['assi'.$player[$x]]);
-			$p->setAverage($_POST['avrg'.$player[$x]]);
+			$p->setScore($_POST['avrg'.$player[$x]]);
 
 			$p->setMatch();
 
