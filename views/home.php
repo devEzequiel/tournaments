@@ -54,7 +54,7 @@
       <td><?php echo $p['matches']; ?></td>
       <td><?php echo $p['goals']; ?></td>
       <td><?php echo $p['assists']; ?></td>
-      <td><?php echo ($p['average']/$p['matches']); ?></td>
+      <td><?php if($p['matches'] != 0){echo ($p['score']/$p['matches']); }else{ echo 0; }; ?></td>
     </tr>
     <tr>
   </tbody>
