@@ -12,7 +12,7 @@ class playersController extends Controller
 		$player->setGoals($_GET['goals']);
 		$player->setMatches($_GET['matches']);
 		$player->setAssists($_GET['assists']);
-		$player->setAverage($_GET['avrg']);
+		$player->setScore($_GET['avrg']);
 		$player->setTeamName($_GET['team']);
 		
 		switch ($player->setNewPlayer()) {
