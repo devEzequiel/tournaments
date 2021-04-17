@@ -36,7 +36,7 @@ function jsonHandle(json){
 			case '12':
 				var team = 'Lille';
 				break;
-			
+
 		}
 
 		switch(x){
@@ -67,9 +67,9 @@ function jsonHandle(json){
 		}
 
 		html+= '</td></tr></tbody>'
-		
-	}
 
+	}
+	count = 0;
 	$('#stats').replaceWith(html);
 }
 
@@ -140,6 +140,7 @@ $(document).ready(function(){
 			url: './home/byAssists',
 			type: 'get'
 		}).done(function(json){
+			$('#stats').replaceWith('');
 			jsonHandle(json);
 		})
 
