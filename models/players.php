@@ -1,17 +1,18 @@
 <?php
+
 class Players extends Model
-{	
-	private $id;
+{
+    private $id;
     private $team_id;
-	private $name;
-	private $goals;
-	private $assists;
+    private $name;
+    private $goals;
+    private $assists;
     private $score;
-	private $matches;
+    private $matches;
     private $team_name;
 
     public function setNewPlayer()
-    {   
+    {
         global $db;
         $pdo = "SELECT * FROM players WHERE (team_id = :t AND name = :n)";
         $pdo = $this->db->prepare($pdo);
@@ -38,12 +39,12 @@ class Players extends Model
         } else {
             return 1;
         }
-    }    
+    }
 
     public function getStats($team_id)
-    {   
+    {
         global $db;
-        $stmt = " SELECT * FROM players WHERE team_id = :t";
+        $stmt = "SELECT team_id, name, goals, assists, matches, ROUND(score/matches, 2) as average FROM players WHERE matches > '0' ORDER BY goals DESC";
         $stmt = $this->db->prepare($stmt);
         $stmt->bindValue(':t', $team_id);
         $stmt->execute();
@@ -54,7 +55,7 @@ class Players extends Model
     }
 
     public function getPlayersName()
-    {   
+    {
         global $db;
         $stmt = " SELECT name FROM players WHERE team_id = :t";
         $stmt = $this->db->prepare($stmt);
@@ -67,10 +68,9 @@ class Players extends Model
     }
 
 
-
     public function getPlayersByGoals()
     {
-        $stmt = "SELECT * FROM players ORDER BY goals DESC";
+        $stmt = "SELECT team_id, name, goals, assists, matches, ROUND(score/matches, 2) as average FROM players WHERE matches > '0' ORDER BY goals DESC";
         $stmt = $this->db->query($stmt);
 
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -80,7 +80,7 @@ class Players extends Model
 
     public function getPlayersByAssists()
     {
-        $stmt = "SELECT * FROM players ORDER BY assists DESC";
+        $stmt = "SELECT team_id, name, goals, assists, matches, ROUND(score/matches, 2) as average FROM players WHERE matches > '0' ORDER BY assists DESC";
         $stmt = $this->db->query($stmt);
 
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -90,7 +90,7 @@ class Players extends Model
 
     public function getPlayersByScore()
     {
-        $stmt = "SELECT * FROM players WHERE matches > '0' ORDER BY (score/matches) DESC";
+        $stmt = "SELECT team_id, name, goals, assists, matches, ROUND(score/matches, 2) as average FROM players WHERE matches > '0' ORDER BY average DESC";
         $stmt = $this->db->query($stmt);
 
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -100,14 +100,14 @@ class Players extends Model
 
     public function getPlayersByMatches()
     {
-        $stmt = "SELECT * FROM players WHERE matches > '0' ORDER BY (score/matches) DESC";
+        $stmt = "SELECT team_id, name, goals, assists, matches, ROUND(score/matches, 2) as average FROM players WHERE matches > '0' ORDER BY matches DESC";
         $stmt = $this->db->query($stmt);
 
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
     }
-    
+
     /**
      * @return mixed
      */
@@ -125,7 +125,7 @@ class Players extends Model
     }
 
     /**
-     * @param mixed $team_id
+     * @param  mixed  $team_id
      *
      * @return self
      */
@@ -151,7 +151,7 @@ class Players extends Model
     }
 
     /**
-     * @param mixed $name
+     * @param  mixed  $name
      *
      * @return self
      */
@@ -171,13 +171,13 @@ class Players extends Model
     }
 
     /**
-     * @param mixed $goals
+     * @param  mixed  $goals
      *
      * @return self
      */
     public function setGoals($goals)
-    {   
-        if(empty($goals)){
+    {
+        if (empty($goals)) {
             $goals = 0;
         }
 
@@ -195,13 +195,13 @@ class Players extends Model
     }
 
     /**
-     * @param mixed $assists
+     * @param  mixed  $assists
      *
      * @return self
      */
     public function setAssists($assists)
     {
-        if(empty($assists)){
+        if (empty($assists)) {
             $assists = 0;
         }
         $this->assists = $assists;
@@ -218,18 +218,22 @@ class Players extends Model
     }
 
     /**
-     * @param mixed $score
+     * @param  mixed  $score
      *
      * @return self
      */
     public function setScore($score)
-    {   
-        if($score > 10){
-            $this->score = $score/10;
-        } else if (($score <= 10) && !empty($score)){
-            $this->score = $score;
-        } else if (empty($score)){
-            $this->score = 6;
+    {
+        if ($score > 10) {
+            $this->score = $score / 10;
+        } else {
+            if (($score <= 10) && !empty($score)) {
+                $this->score = $score;
+            } else {
+                if (empty($score)) {
+                    $this->score = 6;
+                }
+            }
         }
         return $this;
     }
@@ -244,7 +248,7 @@ class Players extends Model
 
 
     public function setMatch()
-    {   
+    {
         $pdo = "SELECT * FROM players WHERE name = :n";
         $pdo = $this->db->prepare($pdo);
         $pdo->bindValue(':n', $this->name);
@@ -278,7 +282,7 @@ class Players extends Model
     }
 
     /**
-     * @param mixed $team_name
+     * @param  mixed  $team_name
      *
      * @return self
      */
@@ -292,7 +296,7 @@ class Players extends Model
     }
 
     /**
-     * @param mixed $matches
+     * @param  mixed  $matches
      *
      * @return self
      */
