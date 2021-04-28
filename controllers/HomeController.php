@@ -3,44 +3,43 @@
 class homeController extends Controller
 {
 
-	public function index()
-	{
-		$players = new Players();
-		$teams = new Teams;
-		$data = $players->getPlayersByGoals();
+    public function index()
+    {
+        $this->loadTemplate('home');
+    }
 
-		$this->loadTemplate('home', $data);
-	}
+    public function stats()
+    {
+        $data = (new Players)->getPlayersByGoals();
+        header('Content-type: application/json');
+        echo json_encode($data);
+    }
 
-	public function stats(){
-		$players = new Players();
-		$data = $players->getPlayersByGoals();
+    public function byAssists()
+    {
+        $players = new Players();
+        $data = $players->getPlayersByAssists();
 
-		header ('Content-type: application/json');
-		echo json_encode($data);
-	}
+        header('Content-type: application/json');
+        echo json_encode($data);
+    }
 
-	public function byAssists(){
-		$players = new Players();
-		$data = $players->getPlayersByAssists();
+    public function byScore()
+    {
 
-		header ('Content-type: application/json');
-		echo json_encode($data);
-	}
+        $players = new Players();
+        $data = $players->getPlayersByScore();
 
-	public function byScore(){
-		$players = new Players();
-		$data = $players->getPlayersByScore();
+        header('Content-type: application/json');
+        echo json_encode($data);
+    }
 
-		header ('Content-type: application/json');
-		echo json_encode($data);
-	}
+    public function byMatches()
+    {
+        $players = new Players();
+        $data = $players->getPlayersByMatches();
 
-	public function byMatches(){
-		$players = new Players();
-		$data = $players->getPlayersByMatches();
-
-		header ('Content-type: application/json');
-		echo json_encode($data);
-	}
+        header('Content-type: application/json');
+        echo json_encode($data);
+    }
 }
