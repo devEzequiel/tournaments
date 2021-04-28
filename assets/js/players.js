@@ -54,23 +54,15 @@ function jsonHandle(json){
 		}
 
 		if(x<3){
-			html += '<tbody id="stats"><tr id="'+id+'"><td scope="row">'+json[i]['name']+'</td><td>'+team+'</td><td>'+json[i]['matches']+'</td><td>'+json[i]['goals']+'</td><td>'+json[i]['assists']+'</td><td>';
+			html += '<tr id="'+id+'"><td scope="row">'+json[i]['name']+'</td><td>'+team+'</td><td>'+json[i]['matches']+'</td><td>'+json[i]['goals']+'</td><td>'+json[i]['assists']+'</td><td>'+json[i]['average']+'</td></tr>';
 			x++;
 		} else {
-			html += '<tbody><tr id=""><td scope="row">'+json[i]['name']+'</td><td>'+team+'</td><td>'+json[i]['matches']+'</td><td>'+json[i]['goals']+'</td><td>'+json[i]['assists']+'</td><td>';
+			html += '<tr><td scope="row">'+json[i]['name']+'</td><td>'+team+'</td><td>'+json[i]['matches']+'</td><td>'+json[i]['goals']+'</td><td>'+json[i]['assists']+'</td><td>'+json[i]['average']+'</td></tr>';
 		}
-
-		if (json[i]['matches'] != 0) {
-			html += json[i]['score']/json[i]['matches'];
-		} else {
-			html += 0;
-		}
-
-		html+= '</td></tr></tbody>'
 
 	}
-	count = 0;
-	$('#stats').replaceWith(html);
+
+	$('#stats').html(html);
 }
 
 //add new player
@@ -95,9 +87,9 @@ $(document).ready(function(){
 				},
 			datatype: 'json',
 			type: 'get',
-			url: 'http://localhost/GitHub/tournaments/players/adicionar' 
+			url: 'http://localhost/GitHub/tournaments/players/adicionar'
 		}).done(function(result){
-			
+
 			if (result == 0) {
 				$('#team-msg').html('<div class="alert alert-success" id="msg" role="alert">Jogador adicionado com Sucesso! Recarregue a página.</div>');
 			} else {
@@ -140,7 +132,6 @@ $(document).ready(function(){
 			url: './home/byAssists',
 			type: 'get'
 		}).done(function(json){
-			$('#stats').replaceWith('');
 			jsonHandle(json);
 		})
 
