@@ -17,7 +17,6 @@ $(document).ready(function(){
 
 			$("#table1").show();
 			let count = json.length;
-			console.log(json);
 			let x;
 			let html;
 			for(x = 0; x<count; x++){

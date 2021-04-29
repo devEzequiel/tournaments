@@ -4,73 +4,46 @@
  */
 class Teams extends Model
 {
-	private $team_id;
-	private $team_name;
-
     /**
-     * @return mixed
+     * @param $id
+     * @return array
      */
-    public function getTeamId()
-    {
-        return $this->team_id;
-    }
-
-    /**
-     * @param mixed $team_id
-     *
-     * @return self
-     */
-    public function setTeamId($team_id)
-    {
-        $this->team_id = $team_id;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTeamName($id)
+    public function getTeamName($id): array
     {
         $stmt = "SELECT team_name FROM teams WHERE team_id = :id";
         $stmt = $this->db->prepare($stmt);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $data;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getTeams()
+    /**
+     * @return array
+     */
+    public function getTeams(): array
     {
-       global $db;
        $stmt = "SELECT * FROM teams ORDER BY team_name ASC";
        $stmt = $this->db->query($stmt);
 
-       $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-       return $data;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
     /**
      * @param mixed $team_name
      *
-     * @return self
+     * @return int
      */
-    public function setTeamName($team_name)
+    public function setTeamName($team_name): int
     {	
-        try {	
-
-        	global $db;
+        try {
         	$stmt = "SELECT * FROM teams WHERE team_name = :n";
 			$stmt = $this->db->prepare($stmt);
 	        $stmt->bindValue(':n', $team_name);        
 	       	$stmt->execute();
 
 	       	$data = $stmt->fetch();
-
 
 	    } catch (PDOException $e){
 
@@ -81,18 +54,19 @@ class Teams extends Model
 	    	var_dump($exception);
 	    }
 
+        if (isset($data)) {
+            if ($data == false) {
+                $stmt = "INSERT INTO teams SET team_name = :n";
+                $stmt = $this->db->prepare($stmt);
+                $stmt->bindValue(':n', $team_name);
+                $stmt->execute();
 
-        if ($data == false) {
-        	$stmt = "INSERT INTO teams SET team_name = :n";
-        	$stmt = $this->db->prepare($stmt);
-	        $stmt->bindValue(':n', $team_name);
-	        $stmt->execute();
-
-	        if ($stmt->rowCount() > 0){
-	        	return 0;
-	        } else {
-	        	return 1;
-	        }
+                if ($stmt->rowCount() > 0){
+                    return 0;
+                } else {
+                    return 1;
+                }
+            }
         }
 
         return 2;

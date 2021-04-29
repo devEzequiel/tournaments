@@ -1,45 +1,30 @@
-#div1{
-	padding-left: -330px;
-	float: left;
-}
 
-#div2{
-	float: right;
-}
-#selects{
-	margin-top: 50px;
-	align-items: left;
-}
 #sel1{
-	margin-right: 300px;
-	border: 3px ridge #C4C9FF;
-	border-radius: 4px;
 	width: 200px;
 	height: 40px;
-	float: center;
-	font-family: gotham black;
+	border: 3px ridge #C4C9FF;
+	border-radius: 4px;
+	font-family: gotham black, serif;
 	font-size: 17px;
 }
 
 #sel2{
-	margin-left: 300px;
 	border: 3px ridge #C4C9FF;
 	border-radius: 4px;
 	width: 200px;
 	height: 40px;
-	float: center;
-	font-family: gotham black;
+	font-family: gotham black, serif;
 	font-size: 17px;
 }
 
-.sel:hover{
+select:hover{
 	border-color: #83acfe !important;
 }
 
 #xis{
-	margin-top: 0px;
+	margin-top: 0;
 	font-size: 25px;
-	font-family: bold;
+	font-family: bold, serif;
 }
 .text8{
 	width: 45px;
@@ -70,15 +55,15 @@ input[type=submit]:hover{
 }
 
 #msg3{
-	width: 1020px !important;
+	width: 800px !important;
 }
 
 #tbf{
-	background-color: #409DFF;
+	background-color: #add3ff;
 }
 #tbs{
-	background-color: #40B6FF;
+	background-color: #acf6ff;
 }
 #tbt{
-	background-color: #40D2FF;
+	background-color: #cbefff;
 }
